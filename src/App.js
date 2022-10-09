@@ -1,14 +1,15 @@
 import LandingPage from "./pages/LandingPage";
-import { Pagination } from "@mantine/core";
+import { Container } from "@mantine/core";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 
+const queryClient = new QueryClient();
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <QueryClientProvider client={queryClient} contextSharing={true}>
+      <Container>
         <LandingPage />{" "}
-      </header>
-      <Pagination total={10} />
-    </div>
+      </Container>
+    </QueryClientProvider>
   );
 }
 

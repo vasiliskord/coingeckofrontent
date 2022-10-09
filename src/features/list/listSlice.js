@@ -9,9 +9,9 @@ const initialState = {
 };
 
 //get all coins
-export const getList = createAsyncThunk("list/getCoins", async (_,thunkAPI) => {
+export const getList = createAsyncThunk("list/getCoins", async (_,page,thunkAPI) => {
   try {
-    const response = await listService.getCoins();
+    const response = await listService.getList(page);
     return response;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data);
