@@ -9,9 +9,13 @@ const initialState = {
 };
 
 //get all coins
-export const getList = createAsyncThunk("list/getCoins", async () => {
-  const response = await listService.getCoins();
-  return response;
+export const getList = createAsyncThunk("list/getCoins", async (_,thunkAPI) => {
+  try {
+    const response = await listService.getCoins();
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
 });
 
 export const listSlice = createSlice({
@@ -22,9 +26,6 @@ export const listSlice = createSlice({
       state.status = "idle";
       state.error = null;
     },
-  },
-  extraReducers: {
-    [getList.pending]: (state) => initialState,
   },
   extraReducers: (builder) => {
     builder

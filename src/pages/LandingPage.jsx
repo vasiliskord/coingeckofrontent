@@ -1,6 +1,7 @@
 import { Center, Container, Text, Button } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import ListItem from "../components/ListItem";
 import { getList, reset } from "../features/list/listSlice";
 
 function LandingPage() {
@@ -18,7 +19,9 @@ function LandingPage() {
 
   return (
     <>
-      <Text>Coins</Text>
+      <Container>{coins.map((coin)=>{
+        return <ListItem key={coin.id} item={coin}/>
+      })} </Container>
     </>
   );
 }

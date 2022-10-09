@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-const API_URL="/api";
+const API_URL = "api/";
 
 //get all coins
 
 const getCoins = async() => {
     const response= await axios.get(API_URL);
+    console.log(response.data);
     return response.data;
 };
 
