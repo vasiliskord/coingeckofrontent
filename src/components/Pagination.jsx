@@ -6,9 +6,9 @@ function Paginate({ totalPosts, postsPerPage, setCurrentPage }) {
     pageNumbers.push(i);
   }
   return (
-    <Center>
+    <Center >
       {pageNumbers.map((number) => {
-        return <Button onClick={() => setCurrentPage(number)}>{number}</Button>;
+        return <Button onClick={() => setCurrentPage(number)} style={{marginRight:"5px",backgroundColor:"black"}}>{number}</Button>;
       })}
     </Center>
   );

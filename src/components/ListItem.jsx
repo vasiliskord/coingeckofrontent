@@ -3,7 +3,7 @@ import { Container, Text, Pagination, Image, Center } from "@mantine/core";
 function ListItem({ item }) {
   return (
     <>
-      <Container>
+      <Container style={{ marginBottom: "20px" }}>
         {item.map((coin, index) => {
           return (
             <Container

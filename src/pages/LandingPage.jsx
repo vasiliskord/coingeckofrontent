@@ -26,7 +26,7 @@ function LandingPage() {
   return (
     <>
       <Container style={{ height: "100vh" }}>
-        <ListItem item={currentPosts} />;
+        <ListItem item={currentPosts} />
         <Paginate
           totalPosts={coins.length}
           postsPerPage={postsPerPage}

@@ -6,10 +6,11 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Container>
+      <Container >
         <LandingPage />{" "}
       </Container>
     </QueryClientProvider>
+
   );
 }
 
