@@ -1,18 +1,10 @@
-import { Container, Text, Pagination, Image, Center } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
+import { Container, Text } from "@mantine/core";
 
-function ListItem({ item }) {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(`/coin/${item.id}`);
-  };
-
+function Header() {
   return (
     <>
-      <Container style={{ marginTop: "5px" }}>
+      <Container style={{ marginBottom: "5px",marginTop:"20px" }}>
         <Container
-          onClick={handleClick}
           style={{
             display: "flex",
             flexDirection: "row",
@@ -30,20 +22,15 @@ function ListItem({ item }) {
               paddingBottom: "10px",
             }}
           >
-            <Image
-              src={item.image}
-              alt={item.name}
-              style={{ width: "40px", height: "40px" }}
-            />
             <Container
               style={{
-                marginLeft: "10px",
+                marginLeft: "50px",
                 marginRight: "200px",
                 paddingRight: "0px",
                 maxWidth: "10px",
               }}
             >
-              <Text>{item.name}</Text>
+              <Text size="l">Coins</Text>
             </Container>
             <Container
               style={{
@@ -54,7 +41,7 @@ function ListItem({ item }) {
                 paddingRight: "0px",
               }}
             >
-              <Text>{item.price_change_percentage_24h}%</Text>
+              <Text size="">Price Change</Text>
             </Container>
             <Container
               style={{
@@ -63,7 +50,7 @@ function ListItem({ item }) {
                 maxWidth: "10px",
               }}
             >
-              <Text>{item.current_price}$</Text>
+              <Text>Current Price</Text>
             </Container>
             <Container
               style={{
@@ -72,7 +59,7 @@ function ListItem({ item }) {
                 maxWidth: "10px",
               }}
             >
-              <Text>{item.high_24h}$</Text>
+              <Text>Highest 24h</Text>
             </Container>
             <Container
               style={{
@@ -81,7 +68,7 @@ function ListItem({ item }) {
                 maxWidth: "10px",
               }}
             >
-              <Text>{item.low_24h}$</Text>
+              <Text>Lowest 24h</Text>
             </Container>
           </Container>
         </Container>
@@ -90,4 +77,5 @@ function ListItem({ item }) {
   );
 }
 
-export default ListItem;
+
+export default Header;

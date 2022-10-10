@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ListItem from "../components/ListItem";
 import { getList, reset } from "../features/list/listSlice";
-import Paginate from "../components/Pagination";
 import useGetAllCoins from "../components/UseGetAllCoins";
+import Header from "../components/Header";
 
 function LandingPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageUrl, setPageUrl] = useState(`http://localhost:5000/api`);
 
-  const {status,data}=useGetAllCoins(pageUrl)
+  const { status, data } = useGetAllCoins(pageUrl);
   console.log(data);
 
   const handlePageChange = (page) => {
@@ -25,20 +25,21 @@ function LandingPage() {
       console.log(error);
     }
 
-    setPageUrl(`/api?page=${currentPage}`)
+    setPageUrl(`/api?page=${currentPage}`);
     dispatch(getList());
   }, [dispatch, error, currentPage]);
 
-
   return (
     <>
-        <Container style={{ height: "100vh" }}>
-          {data?.map((item) => {
-            return <ListItem item={item} />;
-          })}
-
-          <Pagination total={data?.length} onChange={handlePageChange}/>
-        </Container>;
+      <Container style={{ height: "100vh" }}>
+        <Header />
+        {data?.map((item) => {
+          return <ListItem item={item} />;
+        })}
+        <Center>
+          <Pagination total={data?.length} onChange={handlePageChange} style={{marginTop:"20px"}}/>
+        </Center>
+      </Container>
     </>
   );
 }
